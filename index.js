@@ -83,6 +83,10 @@ const postedTime = (data) =>{
   console.log(h,'hrs', m,'min')
   return text;
 }
+// sort by views
+const shortByViews = () =>{
+  console.log('hello')
+}
 // no data category
 const noDataCategory = () =>{
   noDataAvailable.innerHTML= '';
@@ -98,7 +102,7 @@ const noDataCategory = () =>{
 }
 // blog page 
 const blogPage = () =>{
-  // location.origin.href('http://127.0.0.1:5500/blog.html') 
+  window.location.href = 'blog.html'
 }
 handelAllData();
 handelAllCategory('1000')
