@@ -5,13 +5,12 @@ const handelAllData = async () => {
   );
   const allCategory = await resource.json();
   const data = allCategory.data;
-   console.log(data)
+  //  console.log(data)
   handelCategory(data);
 };
 // all category
 const allButtonContainer = document.getElementById("all-button-container");
 const handelCategory = (allData) => {
-  
   allData.forEach((data) => {
     const span = document.createElement("span");
     span.innerHTML = `
@@ -28,7 +27,7 @@ const handelAllCategory = async (id) => {
     );
     const allData = await category.json();
   const data = allData.data;
-  console.log("hello", data);
+  // console.log("hello", data);
   handleCard(data);
 };
 // handle card
@@ -49,7 +48,10 @@ const handleCard = (card) => {
     const div = document.createElement("div");
     div.innerHTML = `
           <div class="card bg-base-100">
-        <figure class=" h-48 "><img src="${data?.thumbnail}"  class=" h-full w-full"/></figure>
+        <figure class=" h-48 ">
+              <img src="${data?.thumbnail}"  class=" h-full w-full rounded-xl relative"/>
+              <p class=" absolute text-white h-5 bg-slate-600 -mb-36 text-3 -mr-52">${data?.others?.posted_date ? postedTime(data) : ''}</p>
+        </figure>
         <div class="card-body">
             <div class="flex gap-5">
                     <img class="h-10 w-10 rounded-full" src="${data?.authors[0]?.profile_picture}">
@@ -64,10 +66,24 @@ const handleCard = (card) => {
           `;
     allCartContainer.appendChild(div);
     // console.log(data.authors[0].profile_picture);
-    console.log("hello", data);
+    // console.log("hello", data);
   });
 };
 
+// posted Time
+const postedTime = (data) =>{
+  const p = document.createElement('span')
+  // p.innerText= 'money'
+  const postedTime = data.others.posted_date;
+  // console.log(postedTime)
+  // const d = Math.floor(postedTime / )
+  const h = Math.floor(postedTime / 3600)
+  let m = Math.floor((postedTime % 3600) / 60 )
+  const time = ` ${h} hrs ${m} min ago`
+  console.log(h,'hrs', m,'min')
+
+  return time
+}
 // no data category
 const noDataCategory = () =>{
   const div = document.createElement('div');
@@ -81,6 +97,9 @@ const noDataCategory = () =>{
   // allCartContainer.innerHTML= '';
   console.log('mun', div)
 }
-
+// blog page 
+const blogPage = () =>{
+  // location.origin.href('http://127.0.0.1:5500/blog.html') 
+}
 handelAllData();
 handelAllCategory('1000')
