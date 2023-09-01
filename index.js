@@ -22,45 +22,62 @@ const handelCategory = (allData) => {
 };
 // handel card
 const handelAllCategory = async (id) => {
+  if (!id) {
+    console.log("bangladesh");
+  }
   const category = await fetch(
     `https://openapi.programming-hero.com/api/videos/category/${id}`
-    );
-    const allData = await category.json();
+  );
+  const allData = await category.json();
   const data = allData.data;
   // console.log("hello", data);
-  handleCard(data);
+  handleAllPage(data);
 };
 // handle card
 const allCartContainer = document.getElementById("all-card");
-const noDataAvailable = document.getElementById('no-data-available')
-const postTime = document.getElementById('post-time')
-const handleCard = (card) => {
-    const badge = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-blue-600"><path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" /></svg>'
-    if(card.length===0){
-      noDataCategory()
-    }else{
-      if(card.length > 0){
-    noDataAvailable.innerHTML= '';
-      }
+const noDataAvailable = document.getElementById("no-data-available");
+const postTime = document.getElementById("post-time");
+const handleAllPage = (card) => {
+  if (card.length === 0) {
+    allCartContainer.innerHTML = "";
+    noDataCategory();
+  } else {
+    if (card.length > 0) {
+      noDataAvailable.innerHTML = "";
+      allCartContainer.innerHTML = "";
+      handelAllCard(card);
     }
-    // console.log('my', card.length===0 ? 'bangladesh' : 'false')
-    allCartContainer.innerHTML= '';
-    card.forEach((data) => {
+  }
+  // console.log('my', card.length===0 ? 'bangladesh' : 'false')
+};
+
+// handel all card
+const badge =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-blue-600"><path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" /></svg>';
+const handelAllCard = (card) => {
+  // allCartContainer.innerHTML = "";
+  card.forEach((data) => {
     const div = document.createElement("div");
     div.innerHTML = `
           <div class="card bg-base-100">
         <figure class=" h-48 relative">
-              <img src="${data?.thumbnail}"  class=" h-full w-full rounded-xl "/>
+              <img src="${
+                data?.thumbnail
+              }"  class=" h-full w-full rounded-xl "/>
               <div id="post-time" class=" absolute right-3 bottom-4  text-white  text-center  text-xs ">
-                    ${data?.others?.posted_date ? postedTime(data) : ''}
+                    ${data?.others?.posted_date ? postedTime(data) : ""}
               </div>
         </figure>
         <div class="card-body">
             <div class="flex gap-5">
-                    <img class="h-10 w-10 rounded-full" src="${data?.authors[0]?.profile_picture}">
+                    <img class="h-10 w-10 rounded-full" src="${
+                      data?.authors[0]?.profile_picture
+                    }">
                     <div>
                             <h2 class="card-title">${data?.title}</h2>
-                            <p class="my-2 flex gap-2">${data?.authors[0]?.profile_name} ${data?.authors[0]?.verified ? badge : ''}</p>
+                            <p class="my-2 flex gap-2">${
+                              data?.authors[0]?.profile_name
+                            } ${data?.authors[0]?.verified ? badge : ""}</p>
                             <p class="">${data?.others?.views} views</p>
                     </div>
             </div>
@@ -71,38 +88,41 @@ const handleCard = (card) => {
     // console.log(data.authors[0].profile_picture);
     // console.log("hello", data);
   });
+  console.log(card, "nepal");
 };
 
 // posted Time
-const postedTime = (data) =>{
-  const p = document.createElement('p');
+const postedTime = (data) => {
+  const p = document.createElement("p");
   const postedTime = data.others.posted_date;
-  const h = Math.floor(postedTime / 3600)
-  let m = Math.floor((postedTime % 3600) / 60 )
-  const text = p.innerHTML= `<span class="bg-slate-600 px-3 py-1 rounded-xl">${h} hrs ${m} min ago</span> `
-  console.log(h,'hrs', m,'min')
+  const h = Math.floor(postedTime / 3600);
+  let m = Math.floor((postedTime % 3600) / 60);
+  const text =
+    (p.innerHTML = `<span class="bg-slate-600 px-3 py-1 rounded-xl">${h} hrs ${m} min ago</span> `);
+  // console.log(h,'hrs', m,'min')
   return text;
-}
+};
 // sort by views
-const shortByViews = () =>{
-  console.log('hello')
-}
+const shortByViews = () => {
+  handelAllCategory(false);
+  console.log("hello");
+};
 // no data category
-const noDataCategory = () =>{
-  noDataAvailable.innerHTML= '';
-  const div = document.createElement('div');
-  div.innerHTML= `
+const noDataCategory = () => {
+  noDataAvailable.innerHTML = "";
+  const div = document.createElement("div");
+  div.innerHTML = `
   <div class=" mt-16">
         <img src="./image/Icon.png" class=" w-32 h-32 mx-auto"/>
         <h2 class=" text-3xl mt-6 font-bold">Oops!! Sorry, There is no <br> content here</h2>
   </div>
-  `
+  `;
   noDataAvailable.appendChild(div);
-  console.log('mun', div)
-}
-// blog page 
-const blogPage = () =>{
-  window.location.href = 'blog.html'
-}
+  // console.log('mun', div)
+};
+// blog page
+const blogPage = () => {
+  window.location.href = "blog.html";
+};
 handelAllData();
-handelAllCategory('1000')
+handelAllCategory("1000");
