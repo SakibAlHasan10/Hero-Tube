@@ -14,7 +14,7 @@ const handelCategory = (allData) => {
   allData.forEach((data) => {
     const span = document.createElement("span");
     span.innerHTML = `
-        <button onclick="handelAllCategory(${data.category_id})" class=" hover:bg-black hover:text-white  btn mr-3 md:mr-6 btn-active  text-md font-medium capitalize">${data.category}</button>
+        <button onclick="handelAllCategory(${data.category_id})" class=" focus:bg-red-600 focus:text-white hover:bg-black hover:text-white  btn mr-3 md:mr-6 btn-active  text-md font-medium capitalize">${data.category}</button>
         `;
     allButtonContainer.appendChild(span);
     // console.log(data)
@@ -51,7 +51,7 @@ const handleCard = (card) => {
           <div class="card bg-base-100">
         <figure class=" h-48 relative">
               <img src="${data?.thumbnail}"  class=" h-full w-full rounded-xl "/>
-              <div id="post-time" class=" absolute right-3 bottom-3  text-white  text-center  text-xs ">
+              <div id="post-time" class=" absolute right-3 bottom-4  text-white  text-center  text-xs ">
                     ${data?.others?.posted_date ? postedTime(data) : ''}
               </div>
         </figure>
@@ -77,16 +77,15 @@ const handleCard = (card) => {
 const postedTime = (data) =>{
   const p = document.createElement('p');
   const postedTime = data.others.posted_date;
-  // console.log(postedTime)
   const h = Math.floor(postedTime / 3600)
   let m = Math.floor((postedTime % 3600) / 60 )
   const text = p.innerHTML= `<span class="bg-slate-600 px-3 py-1 rounded-xl">${h} hrs ${m} min ago</span> `
   console.log(h,'hrs', m,'min')
   return text;
-  postTime.appendChild(p)
 }
 // no data category
 const noDataCategory = () =>{
+  noDataAvailable.innerHTML= '';
   const div = document.createElement('div');
   div.innerHTML= `
   <div class=" mt-16">
@@ -95,7 +94,6 @@ const noDataCategory = () =>{
   </div>
   `
   noDataAvailable.appendChild(div);
-  // allCartContainer.innerHTML= '';
   console.log('mun', div)
 }
 // blog page 
