@@ -1,6 +1,5 @@
 // call api
 let category;
-console.log('all data' , category)
 const handelAllData = async () => {
   const resource = await fetch(
     "https://openapi.programming-hero.com/api/videos/categories"
@@ -59,7 +58,6 @@ const postTime = document.getElementById("post-time");
 // handle all page
 const handleAllPage = (card) => {
   category = card;
-  console.log(category)
   if (card.length === 0) {
     allCartContainer.innerHTML = "";
     noDataCategory();
@@ -78,7 +76,6 @@ const badge =
 
 const handelAllCard = (card) => {
   allCartContainer.innerHTML='';
-  console.log(card)
   card.forEach((data) => {
     const div = document.createElement("div");
     div.innerHTML = `
@@ -123,7 +120,6 @@ const postedTime = (data) => {
 // sort by views button click
 const sortByViews = () => {
   let arr = category.sort(customSort)
-  console.log(category, arr, customSort)
   handelAllCard(arr)
 };
 // no data available page
@@ -146,7 +142,3 @@ handelAllData();
 handelAllCategory("1000");
 
 
-// blog section
-const goHome = () =>{
-  window.location.href = "index.html"
-}

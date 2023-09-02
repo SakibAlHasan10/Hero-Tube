@@ -16,9 +16,6 @@
             <div class="navbar-start">
                 <img src="./image/Logo.png" alt="" srcset="">
             </div>
-            <div>
-                <button id="short-views" onclick="sortByViews()" class="active:shadow-black active:shadow-lg hover:bg-black hover:text-white focus:bg-red-600 focus:text-white btn ml-6 capitalize font-medium">Questions 1</button>
-            </div>
             <div class="navbar-end">
                 <a class="active:shadow-black active:shadow-lg hover:bg-black text-white btn capitalize text-lg bg-[#FF1F3D] font-medium" onclick="goHome()">go Home</a>
             </div>
@@ -87,6 +84,11 @@
                 <p class="text-xl">An API, or application programming interface, is a set of rules that define how applications or devices can connect to and communicate with each other. A REST API is an API that conforms to the design principles of the REST, or representational state transfer architectural style. For this reason, REST APIs are sometimes referred to RESTful APIs.</p>
         </section>
     </main>
-    <script src="./index.js"></script>
+    <script>
+        const goHome = () =>{
+            window.location.href = "index.html";
+        }
+    </script>
+    <!-- <script src="./index.js"></script> -->
 </body>
 </html>
