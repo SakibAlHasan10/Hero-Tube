@@ -9,67 +9,84 @@
     
 </head>
 <body>
-    <section class="max-w-screen-lg mx-auto px-4 md:px-8 py-8 my-6">
-        <!-- Questions #1 -->
-        <h2 class="text-3xl font-semibold mb-8">#1: Discuss the scope of var, let, and const</h2>
-
-        <table class="border-separate border border-slate-400 p-2 w-full mb-10 text-xl">
-            <tr class="text-2xl">
-                <th class="border border-slate-300 py-2">Var</th>
-                <th class="border border-slate-300 py-2">Let</th>
-                <th class="border border-slate-300 py-2">Const</th>
-            </tr>
-            <tr>
-                <td class="border border-slate-300 py-2 px-5 ">Var declarations are globally scoped or function scoped.</td>
-                <td class="border border-slate-300 py-2 px-5 ">Let are block scoped.</td>
-                <td class="border border-slate-300 py-2 px-5 ">Const are block scoped.</td>
-            </tr>
-            <tr>
-                <td class="border border-slate-300 py-2 px-5 ">Var variables can be updated and re-declared.</td>
-                <td class="border border-slate-300 py-2 px-5 ">Let variables can be updated but not re-declared.</td>
-                <td class="border border-slate-300 py-2 px-5 ">Const variables can neither be updated or re-declared.</td>
-            </tr>
-            <tr>
-                <td class="border border-slate-300 py-2 px-5 ">Var can be declared without being initialized</td>
-                <td class="border border-slate-300 py-2 px-5 ">Let can be declared without being initialized</td>
-                <td class="border border-slate-300 py-2 px-5 ">Const must be initialized during declaration.</td>
-            </tr>
-        </table>
-        <!-- Questions #2 -->
-        <h2 class="text-3xl font-semibold mb-8">#2: Tell us the use cases of null and undefined</h2>
-        <table class="border-separate border border-slate-400 p-2 w-full mb-10 text-xl">
-            <tr class="text-2xl">
-                <th class="border border-slate-300 py-2"> Null</th>
-                <th class="border border-slate-300 py-2">Undefined</th>
-            </tr>
-            <tr >
-                <td class="border border-slate-300 py-2 px-5 ">Null is basically an assignment value given to a variable.</td>
-                <td class="border border-slate-300 py-2 px-5 ">We declare a variable if do not assign value to it, the variable becomes undefined.</td>
-            </tr>
-            <tr >
-                <td class="border border-slate-300 py-2 px-5 ">When assign null as a value to any variable, it means that it is empty or blank.</td>
-                <td class="border border-slate-300 py-2 px-5 ">Unlike null, the value of an undefined variable is set by JavaScript as undefined.</td>
-            </tr>
-            <tr >
-                <td class="border border-slate-300 py-2 px-5 ">It is to show that the variable has no value.</td>
-                <td class="border border-slate-300 py-2 px-5 ">when a function doesn't return a value, it returns undefined.</td>
-            </tr>
-        </table>
-        <!-- Questions #3 -->
-        <h2 class="text-3xl font-semibold mb-8">#3:  What do you mean by REST API?</h2>
-        <h3 class="text-2xl font-medium mb-5">REST API methods:</h3>
-        <table class="border-separate border border-slate-400 p-2 w-full mb-10">
-            <tr class="text-2xl">
-                <th class="border border-slate-300 py-2">Get</th>
-                <th class="border border-slate-300 py-2">Post</th>
-                <th class="border border-slate-300 py-2">Put/Patch</th>
-                <th class="border border-slate-300 py-2">Delete</th>
-            </tr>
-            </table>
-            <p class="text-xl">An API, or application programming interface, is a set of rules that define how applications or devices can connect to and communicate with each other. A REST API is an API that conforms to the design principles of the REST, or representational state transfer architectural style. For this reason, REST APIs are sometimes referred to RESTful APIs.</p>
-    </section>
+    <!-- header section -->
+    <header class="max-w-screen-xl mx-auto px-4 md:px-8  mb-6">
+        <!-- navbar section -->
+        <div class="navbar bg-base-100 my-5">
+            <div class="navbar-start">
+                <img src="./image/Logo.png" alt="" srcset="">
+            </div>
+            <div>
+                <button id="short-views" onclick="sortByViews()" class="active:shadow-black active:shadow-lg hover:bg-black hover:text-white focus:bg-red-600 focus:text-white btn ml-6 capitalize font-medium">Questions 1</button>
+            </div>
+            <div class="navbar-end">
+                <a class="active:shadow-black active:shadow-lg hover:bg-black text-white btn capitalize text-lg bg-[#FF1F3D] font-medium" onclick="goHome()">go Home</a>
+            </div>
+        </div>
+        <hr class="bg-slate-600">
+    </header>
+    <!-- main section -->
+    <main>
+        <section class="max-w-screen-lg mx-auto px-4 md:px-8 py-8 my-6">
+            <!-- Questions #1 -->
+            <h2 class="text-3xl font-semibold mb-8">#1: Discuss the scope of var, let, and const</h2>
     
-
-
+            <table class="border-separate border border-slate-400 p-2 w-full mb-10 text-xl">
+                <tr class="text-2xl">
+                    <th class="border border-slate-300 py-2">Var</th>
+                    <th class="border border-slate-300 py-2">Let</th>
+                    <th class="border border-slate-300 py-2">Const</th>
+                </tr>
+                <tr>
+                    <td class="border border-slate-300 py-2 px-5 ">Var declarations are globally scoped or function scoped.</td>
+                    <td class="border border-slate-300 py-2 px-5 ">Let are block scoped.</td>
+                    <td class="border border-slate-300 py-2 px-5 ">Const are block scoped.</td>
+                </tr>
+                <tr>
+                    <td class="border border-slate-300 py-2 px-5 ">Var variables can be updated and re-declared.</td>
+                    <td class="border border-slate-300 py-2 px-5 ">Let variables can be updated but not re-declared.</td>
+                    <td class="border border-slate-300 py-2 px-5 ">Const variables can neither be updated or re-declared.</td>
+                </tr>
+                <tr>
+                    <td class="border border-slate-300 py-2 px-5 ">Var can be declared without being initialized</td>
+                    <td class="border border-slate-300 py-2 px-5 ">Let can be declared without being initialized</td>
+                    <td class="border border-slate-300 py-2 px-5 ">Const must be initialized during declaration.</td>
+                </tr>
+            </table>
+            <!-- Questions #2 -->
+            <h2 class="text-3xl font-semibold mb-8">#2: Tell us the use cases of null and undefined</h2>
+            <table class="border-separate border border-slate-400 p-2 w-full mb-10 text-xl">
+                <tr class="text-2xl">
+                    <th class="border border-slate-300 py-2"> Null</th>
+                    <th class="border border-slate-300 py-2">Undefined</th>
+                </tr>
+                <tr >
+                    <td class="border border-slate-300 py-2 px-5 ">Null is basically an assignment value given to a variable.</td>
+                    <td class="border border-slate-300 py-2 px-5 ">We declare a variable if do not assign value to it, the variable becomes undefined.</td>
+                </tr>
+                <tr >
+                    <td class="border border-slate-300 py-2 px-5 ">When assign null as a value to any variable, it means that it is empty or blank.</td>
+                    <td class="border border-slate-300 py-2 px-5 ">Unlike null, the value of an undefined variable is set by JavaScript as undefined.</td>
+                </tr>
+                <tr >
+                    <td class="border border-slate-300 py-2 px-5 ">It is to show that the variable has no value.</td>
+                    <td class="border border-slate-300 py-2 px-5 ">when a function doesn't return a value, it returns undefined.</td>
+                </tr>
+            </table>
+            <!-- Questions #3 -->
+            <h2 class="text-3xl font-semibold mb-8">#3:  What do you mean by REST API?</h2>
+            <h3 class="text-2xl font-medium mb-5">REST API methods:</h3>
+            <table class="border-separate border border-slate-400 p-2 w-full mb-10">
+                <tr class="text-2xl">
+                    <th class="border border-slate-300 py-2">Get</th>
+                    <th class="border border-slate-300 py-2">Post</th>
+                    <th class="border border-slate-300 py-2">Put/Patch</th>
+                    <th class="border border-slate-300 py-2">Delete</th>
+                </tr>
+                </table>
+                <p class="text-xl">An API, or application programming interface, is a set of rules that define how applications or devices can connect to and communicate with each other. A REST API is an API that conforms to the design principles of the REST, or representational state transfer architectural style. For this reason, REST APIs are sometimes referred to RESTful APIs.</p>
+        </section>
+    </main>
+    <script src="./index.js"></script>
 </body>
 </html>

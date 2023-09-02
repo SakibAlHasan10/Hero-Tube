@@ -15,7 +15,7 @@ const handelCategory = (allData) => {
       allData.forEach((data) => {
         const span = document.createElement("span");
         span.innerHTML = `
-                <button onclick="handelAllCategory(${data.category_id})" class=" focus:bg-red-600 focus:text-white hover:bg-black hover:text-white  btn mr-3 md:mr-6 btn-active  text-md font-medium capitalize">${data.category}</button>
+                <button onclick="handelAllCategory(${data.category_id})" class=" active:shadow-black active:shadow-lg focus:bg-red-600 focus:text-white hover:bg-black hover:text-white  btn mr-3 md:mr-6  text-md font-medium capitalize">${data.category}</button>
                 `;
         allButtonContainer.appendChild(span);
       });
@@ -144,3 +144,9 @@ const blogPage = () => {
 };
 handelAllData();
 handelAllCategory("1000");
+
+
+// blog section
+const goHome = () =>{
+  window.location.href = "index.html"
+}
